@@ -2,7 +2,7 @@ import {Book, BookEntry, BookResponse} from "../types.ts";
 import axios, {AxiosRequestConfig} from "axios";
 
 const getAxiosConfig = (): AxiosRequestConfig => {
-    const token = localStorage.getItem("jwt");
+    const token = sessionStorage.getItem("jwt");
     return {
         headers: {
             'Authorization': token,
