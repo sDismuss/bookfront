@@ -1,6 +1,6 @@
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import {deleteBook, getBooks} from "../api/bookapi.ts";
-import {DataGrid, GridCellParams, GridColDef, GridToolbar} from '@mui/x-data-grid';
+import {DataGrid, GridCellParams, GridColDef, GridRowsProp, GridToolbar} from '@mui/x-data-grid';
 import Snackbar from '@mui/material/Snackbar';
 import {useState} from "react";
 import AddBook from "./AddBook.tsx";
@@ -8,13 +8,13 @@ import EditBook from "./EditBook.tsx";
 import {Button, IconButton, Stack} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-type BooklistProps = {
+type BookListProps = {
     logOut?: () => void;
 }
 
-function Booklist({logOut}: BooklistProps) {
+function BookList({logOut}: BookListProps) {
     const [open, setOpen] = useState(false);
-    const {data, error, isSuccess} = useQuery({
+    const {data, error, isSuccess} : GridRowsProp<any> = useQuery({
         queryKey: ["books"],
         queryFn: getBooks
     });
@@ -104,4 +104,4 @@ function Booklist({logOut}: BooklistProps) {
     }
 }
 
-export default Booklist;
+export default BookList;
